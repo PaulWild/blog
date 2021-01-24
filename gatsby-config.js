@@ -3,15 +3,15 @@ module.exports = {
     title: "Paul Wild Dev",
   },
   plugins: [
+    { resolve: `gatsby-transformer-remark` },
+    { resolve: `gatsby-plugin-styled-components`},
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "5Bjr8TYyAiu5x7KNylkyeRrgkgOp7h6qFYbSZKqzK9E",
-        spaceId: "a2c5z4nwel2n",
+        accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
+        spaceId: process.env.CONTENTFUL_SPACEID,
       },
     },
-    "gatsby-plugin-sass",
-    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
