@@ -19,14 +19,14 @@ const Post = ({slug, publishDate, title, childContentfulBlogPostBodyTextNode, ta
     )
 }
 
-const Posts = ({data}) => {
+const Index = ({data}) => {
     return (<>
         {data.allContentfulBlogPost.edges.map(post => Post(post.node))}
     </>)
 
 }
 
-export default Posts;
+export default Index;
 
 export const pageQuery = graphql`
     query {

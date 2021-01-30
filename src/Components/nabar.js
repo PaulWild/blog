@@ -39,7 +39,6 @@ export default function NavBar() {
         <nav>
                 <OL>
                     <li><A minWidth={"8em"} to="/" >{text}</A></li>
-                    <li><A  to="/posts">Posts</A></li>
                     <li><A  to="/about">About</A></li>
                     <li><A  to="/projects">Projects</A></li>
                 </OL>
