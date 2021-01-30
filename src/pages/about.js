@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../Components/layout";
 import styled from "styled-components"
 
 const Avatar = styled.img`
@@ -25,7 +24,7 @@ const Name = styled.h1`
 `
 
 const About = ({ data }) => {
-    return (<Layout>
+    return (<>
         <AboutSection>
             <Avatar src={`https:${data.contentfulPerson.image.file.url}`} alt="Girl in a jacket" width="200" height="200"/>
             <div>
@@ -34,7 +33,7 @@ const About = ({ data }) => {
             </div>
         </AboutSection>
         <div dangerouslySetInnerHTML={{  __html: data.contentfulPerson.shortBio.childMarkdownRemark.html}} />
-</Layout>)
+</>)
 }
 
 export const query = graphql`

@@ -3,7 +3,12 @@ module.exports = {
     title: "Paul Wild Dev",
   },
   plugins: [
-    { resolve: `gatsby-transformer-remark` },
+    { resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {resolve: "gatsby-remark-prismjs"}
+        ]
+      }},
     { resolve: `gatsby-plugin-styled-components`},
     {
       resolve: "gatsby-source-contentful",

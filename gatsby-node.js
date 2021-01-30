@@ -1,7 +1,15 @@
 const path = require(`path`)
 
 exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
+    const { createRedirect, createPage } = actions
+
+    createRedirect({
+        fromPath: `/`,
+        toPath: `/posts`,
+        redirectInBrowser: true,
+        isPermanent: true,
+    })
+
     const result = await graphql(`
          query MyQuery {
           allContentfulBlogPost {

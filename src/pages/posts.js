@@ -1,79 +1,17 @@
 import * as React from "react"
-import {graphql, Link} from "gatsby"
-import Layout from "../Components/layout";
-import styled from "styled-components"
-
-const StyledLink = styled(Link)`
-&:link {
-  color: black;
-}
-
-&:visited {
-  color: black;
-}
-
-&:hover {
-  color: black;
-}
-
-&:active {
-  color: black;
-}
-`
-
-const Header = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: baseline;
-  > * {
-        margin-right: 0.5em;
-  }
-`
+import { graphql } from "gatsby"
+import Tags from "../Components/tags"
+import StyledLink from "../Components/styledLink";
+import Header from "../Components/header";
 
 
-const TagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-`
-
-const TagList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 0;
-`
-
-const Tag = styled.li`
-  list-style: none;
-  margin-right: 0.5em;
-  background-color: #cccccc;
-  padding: 0.2em;
-`
-
-const Tags = ({tags}) => {
-    if (tags.length === 0)
-        return (<></>)
-
-    return (
-        <TagsContainer>
-            <TagList>
-                {tags.map(tag => <Tag>{tag}</Tag>)}
-            </TagList>
-        </TagsContainer>
-    )
-
-}
 
 const Post = ({slug, publishDate, title, childContentfulBlogPostBodyTextNode, tags}) => {
-    console.log(tags)
     return (
         <section>
             <Header>
-            <h1>{title}</h1>
-            <h5>{publishDate}</h5>
+                <h1>{title}</h1>
+                <h5>{publishDate}</h5>
             </Header>
             <p>{childContentfulBlogPostBodyTextNode.childMarkdownRemark.excerpt} <StyledLink to={`/posts/${slug}`}>Read more</StyledLink></p>
             <Tags tags={tags}></Tags>
@@ -82,9 +20,9 @@ const Post = ({slug, publishDate, title, childContentfulBlogPostBodyTextNode, ta
 }
 
 const Posts = ({data}) => {
-    return (<Layout>
+    return (<>
         {data.allContentfulBlogPost.edges.map(post => Post(post.node))}
-    </Layout>)
+    </>)
 
 }
 

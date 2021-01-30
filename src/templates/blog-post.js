@@ -1,13 +1,22 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Layout from "../Components/layout";
+import Header from "../Components/header";
+import Tags from "../Components/tags";
 
 const BlogPost = ({data}) => {
 
-    console.log(data.contentfulBlogPost)
-    return (<Layout>
-        <div>{data.contentfulBlogPost.title}</div>
-    </Layout>)
+    return (
+        <>
+        <section>
+            <Header>
+                <h1>{data.contentfulBlogPost.title}</h1>
+                <h5>{data.contentfulBlogPost.publishDate}</h5>
+            </Header>
+            <div dangerouslySetInnerHTML={{ __html: data.contentfulBlogPost.body.childMarkdownRemark.html }} />
+            <Tags tags={data.contentfulBlogPost.tags}></Tags>
+        </section>
+        </>
+    )
 
 }
 
@@ -18,7 +27,8 @@ export const pageQuery = graphql`
         contentfulBlogPost(id: {eq: $id}) {
             slug
             title
-            publishDate
+            publishDate(formatString: "DD MMM YYYY")
+            tags
             body {
                 childMarkdownRemark {
                     html
