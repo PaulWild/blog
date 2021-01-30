@@ -3,7 +3,7 @@ import NavBar from "./nabar";
 import "@fontsource/fira-code"
 import styled, {createGlobalStyle} from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   body { 
     margin: 0; 
     background-color: #eeeeee;  
@@ -21,7 +21,6 @@ const Main = styled.main`
 export default function Layout({children}) {
     return (
         <>
-            <GlobalStyle />
             <NavBar />
             <Main>
                 {children}
