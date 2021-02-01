@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import NavBar from "./nabar";
 import "@fontsource/fira-code"
 import styled, {createGlobalStyle} from "styled-components";
@@ -19,12 +19,24 @@ const Main = styled.main`
 
 
 export default function Layout({children}) {
+
+    const [isReady, setIsReady] = useState(false)
+
+    useEffect(() => {
+      setIsReady(true);
+    }, []);
+
+  
     return (
         <>
+        { isReady && 
+          <>
             <NavBar />
             <Main>
                 {children}
             </Main>
+          </>
+        }
         </>
     )
 }

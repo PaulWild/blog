@@ -1,12 +1,11 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import "@fontsource/fira-code"
+
 
 const OL = styled.ol`
   width: 100%;
-  overflow:auto; 
-  font-family: "Fira Code"; 
+  overflow:auto;  
   font-weight: bold;
   align-items: center;
   list-style: none;
